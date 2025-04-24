@@ -19,17 +19,17 @@ window_frame = tk.Frame(window)
 canvas = tk.Canvas(window_frame, width=CANVAS_WIDTH, height=CANVAS_HEIGHT, bg='white')
 
 canvas.grid(column=0, row=0, rowspan=20)
-puntos_var = tk.IntVar(window_frame, value=10000)
+puntos_var = tk.IntVar(window_frame, value=5000)
 puntos_frame = tk.LabelFrame(window_frame, text='Cantidad de puntos')
 puntos_entry = tk.Entry(puntos_frame, textvariable=puntos_var)
-puntos_entry.pack()
+puntos_entry.pack(padx=5, pady=5)
 puntos_frame.grid(column=1, row=0, columnspan=2)
 #simular_btn = tk.Button(window_frame, text='Simular', command=lambda: dibujar_puntos(canvas, generar_puntos(puntos_var.get())))
 #simular_btn = tk.Button(window_frame, text='Simular', command=lambda: dibujar_puntos_2(canvas, generar_puntos(puntos_var.get())))
 simular_btn = tk.Button(window_frame, text='Simular c/anim', command=lambda: dibujar_wrapper(canvas, generar_puntos(puntos_var.get())))
-simular_btn.grid(column=1, row=1)
+simular_btn.grid(column=1, row=1, padx=5)
 finalizar_btn = tk.Button(window_frame, text='Simular s/anim', command=lambda: dibujar_puntos(canvas, generar_puntos(puntos_var.get())))
-finalizar_btn.grid(column=2, row=1)
+finalizar_btn.grid(column=2, row=1, padx=5)
 
 resultado_label = tk.Label(window_frame)
 resultado_label.grid(column=1, row=2, columnspan=2)
@@ -47,6 +47,7 @@ def punto_esta_adentro(punto):
     return (punto[0] - RADIO_CIRCULO) * (punto[0] - RADIO_CIRCULO) + (punto[1] - RADIO_CIRCULO) * (punto[1] - RADIO_CIRCULO) <= RADIO_CIRCULO * RADIO_CIRCULO
 
 def dibujar_puntos(canvas:tk.Canvas, puntos):
+    puntos_entry['state'] = 'disabled'
     simular_btn['state'] = 'disabled'
     canvas.delete('all')
     canvas.create_rectangle(2, 2, CANVAS_WIDTH + 1, CANVAS_HEIGHT + 1)
@@ -59,11 +60,9 @@ def dibujar_puntos(canvas:tk.Canvas, puntos):
             cant_adentro += 1
         canvas.create_oval(punto[0]-1, punto[1]-1, punto[0]+1, punto[1]+1, outline=color, fill=color)
     resultado_label.config(text=f'4 * {cant_adentro} / {puntos_var.get()} = {4 * cant_adentro / puntos_var.get()}')
+    puntos_entry['state'] = 'normal'
     simular_btn['state'] = 'active'
 
-
-index = 0
-cant_adentro = 0
 
 def dibujar_wrapper(canvas, puntos):
     def dibujar_puntos_inner(canvas:tk.Canvas, puntos):
@@ -82,12 +81,15 @@ def dibujar_wrapper(canvas, puntos):
             index += 1
         resultado_label.config(text=f'4 * {cant_adentro} / {puntos_var.get()} = {4 * cant_adentro / puntos_var.get():.4f}')
         if index < len(puntos):
-            canvas.after(2, dibujar_puntos_inner, canvas, puntos)
+            canvas.after(10, dibujar_puntos_inner, canvas, puntos)
         else:
             print('TERMINADO')
-            simular_btn['state'] = 'active'
-    global simular_btn
+            puntos_entry['state'] = 'normal'
+            simular_btn['state'] = 'normal'
+            finalizar_btn['state'] = 'normal'
+    puntos_entry['state'] = 'disabled'
     simular_btn['state'] = 'disabled'
+    finalizar_btn['state'] = 'disabled'
     index = 0
     cant_adentro = 0
     canvas.delete('all')
