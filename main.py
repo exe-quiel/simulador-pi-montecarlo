@@ -79,7 +79,8 @@ def dibujar_wrapper(canvas, puntos):
             canvas.create_oval(punto[0]-1, punto[1]-1, punto[0]+1, punto[1]+1, outline=color, fill=color)
             i += 1
             index += 1
-        resultado_label.config(text=f'4 * {cant_adentro} / {puntos_var.get()} = {4 * cant_adentro / puntos_var.get():.4f}')
+        #resultado_label.config(text=f'4 * {cant_adentro} / {puntos_var.get()} = {4 * cant_adentro / puntos_var.get():.4f}')
+        resultado_label.config(text=f'4 * {cant_adentro} / {index} = {4 * cant_adentro / puntos_var.get():.4f}')
         if index < len(puntos):
             canvas.after(10, dibujar_puntos_inner, canvas, puntos)
         else:
