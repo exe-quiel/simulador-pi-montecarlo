@@ -14,10 +14,14 @@ Esta estimación surge de dividir el área del círculo por el área del cuadrad
 
 `Área del círculo / Área del cuadrado = PI*(r^2) / 4*(r^2)`
 
-Podemos cancelar `(r^2)`, por lo que nos queda `PI / 4`. De ahí, obtenemos que:
+Podemos cancelar `(r^2)`, por lo que nos queda `PI / 4`.
+
+Considerando que el conjunto de todos los puntos generados es el área del cuadrado y que el conjunto de puntos dentro del círculo es el área de dicha figura, obtenemos que:
 
 `PI / 4 = cantidad de puntos dentro del círculo / cantidad de puntos dentro del cuadrado (cantidad total)`
 
 Si multiplicamos ambos lados de la igualdad por cuatro, llegamos a que:
 
 `PI = 4 * cantidad de puntos dentro del círculo / cantidad de puntos dentro del cuadrado (cantidad total)`
+
+A medida que crece la cantidad de puntos generados, más se acerca el resultado al número pi.
