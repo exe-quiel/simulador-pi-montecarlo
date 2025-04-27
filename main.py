@@ -69,7 +69,7 @@ def dibujar_wrapper(canvas, puntos):
         nonlocal index
         nonlocal cant_adentro
         i = 0
-        print(index)
+        #print(index)
         while i < 5 * len(puntos) / 100  and index < len(puntos):
             punto = puntos[index]
             color = 'blue'
@@ -84,7 +84,7 @@ def dibujar_wrapper(canvas, puntos):
         if index < len(puntos):
             canvas.after(10, dibujar_puntos_inner, canvas, puntos)
         else:
-            print('TERMINADO')
+            #print('TERMINADO')
             puntos_entry['state'] = 'normal'
             simular_btn['state'] = 'normal'
             finalizar_btn['state'] = 'normal'
