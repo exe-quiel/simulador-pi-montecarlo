@@ -80,7 +80,7 @@ def dibujar_wrapper(canvas, puntos):
             i += 1
             index += 1
         #resultado_label.config(text=f'4 * {cant_adentro} / {puntos_var.get()} = {4 * cant_adentro / puntos_var.get():.4f}')
-        resultado_label.config(text=f'4 * {cant_adentro} / {index} = {4 * cant_adentro / puntos_var.get():.4f}')
+        resultado_label.config(text=f'4 * {cant_adentro} / {index} = {4 * cant_adentro / index:.4f}')
         if index < len(puntos):
             canvas.after(10, dibujar_puntos_inner, canvas, puntos)
         else:
