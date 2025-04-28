@@ -25,3 +25,11 @@ Si multiplicamos ambos lados de la igualdad por cuatro, llegamos a que:
 `PI = 4 * cantidad de puntos dentro del círculo / cantidad de puntos dentro del cuadrado (cantidad total)`
 
 A medida que crece la cantidad de puntos generados, más se acerca el resultado al número pi.
+
+## Cómo ejecutar el programa
+
+1. clonar el repositorio con el comando `git clone https://github.com/exe-quiel/simulador-pi-montecarlo.git` o descargar los archivos `main.py`, `criterios.py`, `table.py` y `utils.py` en un mismo directorio
+
+2. hacer doble clic en `main.py` o, desde una terminal, ejecutar `python main.py`
+
+**IMPORTANTE:** es necesario usar Python 3.
